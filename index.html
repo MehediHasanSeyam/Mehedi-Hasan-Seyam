@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>Mehedi Hasan Seyam | Portfolio & Resume Dashboard</title>
+  <meta name="title" content="Mehedi Hasan Seyam | Portfolio & Resume Dashboard">
+  <meta name="description" content="Official portfolio of Mehedi Hasan Seyam — CSE Student at Independent University, Bangladesh (IUB). Exploring Web Development, Programming, and Software Engineering.">
+  <meta name="keywords" content="Mehedi Hasan Seyam, Seyam, IUB, Independent University Bangladesh, CSE Student, Software Engineer, Web Developer, Portfolio, Resume, GitHub Pages">
+  <meta name="author" content="Mehedi Hasan Seyam">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#030712">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://mehedihasanseyam.github.io/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mehedihasanseyam.github.io/">
+  <meta property="og:title" content="Mehedi Hasan Seyam | Portfolio & Resume Dashboard">
+  <meta property="og:description" content="Official portfolio of Mehedi Hasan Seyam — CSE Student at Independent University, Bangladesh (IUB). View projects, skills, education, and contact details.">
+  <meta property="og:image" content="https://mehedihasanseyam.github.io/profile.jpeg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mehedihasanseyam.github.io/">
+  <meta name="twitter:title" content="Mehedi Hasan Seyam | Portfolio & Resume Dashboard">
+  <meta name="twitter:description" content="Official portfolio of Mehedi Hasan Seyam — CSE Student at Independent University, Bangladesh (IUB). View projects, skills, education, and contact details.">
+  <meta name="twitter:image" content="https://mehedihasanseyam.github.io/profile.jpeg">
+
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/jpeg" href="profile.jpeg">
+  <link rel="apple-touch-icon" href="profile.jpeg">
+
+  <!-- Tailwind CSS, Lucide Icons, FontAwesome & Devicon CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Times New Roman', 'Times', 'serif']
+          },
+          colors: {
+            brand: {
+              400: '#38bdf8',
+              500: '#06b6d4',
+              accent: '#818cf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Times New Roman Global Font Override */
+    * {
+      font-family: 'Times New Roman', Times, serif !important;
+    }
+
+    body {
+      background-color: #030712;
+      color: #f3f4f6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Dynamic Blue Glows (Slowed to 20s) */
+    .ambient-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(129, 140, 248, 0.08) 50%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(50px);
+      animation: floatGlow 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(-10%, -10%) scale(1); }
+      100% { transform: translate(20%, 20%) scale(1.2); }
+    }
+
+    /* Glassmorphism Cards */
+    .glass-card {
+      background: rgba(17, 24, 39, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Scroll Animations for Web View (Slowed to 1.8s) */
+    .reveal {
+      opacity: 0;
+      filter: blur(12px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal.fade-up { transform: translateY(60px) scale(0.95); }
+    .reveal.slide-left { transform: translateX(-60px) rotate(-1deg); }
+    .reveal.slide-right { transform: translateX(60px) rotate(1deg); }
+    .reveal.zoom-in { transform: scale(0.85); }
+
+    .reveal.is-visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    .stagger-1 { transition-delay: 0.15s; }
+    .stagger-2 { transition-delay: 0.3s; }
+    .stagger-3 { transition-delay: 0.45s; }
+    .stagger-4 { transition-delay: 0.6s; }
+    .stagger-5 { transition-delay: 0.75s; }
+
+    /* Typewriter Cursor */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+      color: #38bdf8;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Interactive Click Button Enforcement */
+    .click-btn {
+      position: relative !important;
+      z-index: 50 !important;
+      pointer-events: auto !important;
+      cursor: pointer !important;
+    }
+
+    /* PDF Print-Only Styles */
+    .pdf-contact-info {
+      display: none;
+    }
+
+    /* CLEAN & STATIC PRINT/PDF STYLES */
+    @media print {
+      nav, #dashboard-dropdown, footer, #resume, #contact-message, #gallery, #projects, .ambient-glow, .typing-cursor::after {
+        display: none !important;
+      }
+
+      .web-contact-btns {
+        display: none !important;
+      }
+
+      .pdf-contact-info {
+        display: block !important;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+      }
+
+      main {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      .glass-card {
+        background: transparent !important;
+        border: 1px solid #d1d5db !important;
+        color: #000000 !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+        page-break-inside: avoid;
+      }
+
+      h1, h2, h3, h4, span, p, a, div {
+        color: #000000 !important;
+      }
+
+      #typewriter-name, #typewriter-bio {
+        min-height: auto !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Blue Glow Background Effect -->
+  <div class="ambient-glow top-0 left-0"></div>
+  <div class="ambient-glow bottom-0 right-0" style="animation-delay: -10s;"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/70 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
+        SEYAM<span class="text-sky-400">.</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="mailto:mhs2700823@gmail.com" class="px-4 py-2 text-xs font-semibold rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 hover:bg-sky-500 hover:text-white transition-all shadow-lg hover:shadow-sky-500/25">
+          Contact Me
+        </a>
+
+        <!-- 3-LINE DASHBOARD MENU ICON BUTTON (TOP-RIGHT CORNER) -->
+        <button onclick="toggleDashboardMenu()" class="click-btn p-2 rounded-xl bg-gray-900/90 border border-white/10 text-gray-300 hover:text-white hover:border-sky-400 transition-all flex items-center justify-center">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD DROPDOWN MENU PANEL (ALL LINKS INSIDE HERE) -->
+    <div id="dashboard-dropdown" class="hidden border-t border-white/10 bg-gray-950/95 backdrop-blur-2xl max-w-5xl mx-auto px-6 py-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-xs">
+        <a href="#about" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="user" class="w-4 h-4 text-sky-400"></i> Profile
+        </a>
+        <a href="#education" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-sky-400"></i> Education
+        </a>
+        <a href="#personal-details" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="id-card" class="w-4 h-4 text-sky-400"></i> Personal Info
+        </a>
+        <a href="#skills" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="code" class="w-4 h-4 text-sky-400"></i> Skills
+        </a>
+        <a href="#projects" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="folder-git-2" class="w-4 h-4 text-sky-400"></i> Projects
+        </a>
+        <a href="#connect" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="share-2" class="w-4 h-4 text-sky-400"></i> Connect
+        </a>
+        <a href="#references" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="user-check" class="w-4 h-4 text-sky-400"></i> References
+        </a>
+        <a href="#gallery" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-sky-400"></i> Gallery
+        </a>
+        <a href="#resume" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="file-text" class="w-4 h-4 text-sky-400"></i> Resume PDF
+        </a>
+        <a href="#contact-message" onclick="toggleDashboardMenu()" class="p-2.5 rounded-xl glass-card text-gray-300 hover:text-sky-400 hover:border-sky-400/40 flex items-center gap-2">
+          <i data-lucide="message-square" class="w-4 h-4 text-sky-400"></i> Message
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-6 pt-32 pb-20 space-y-24">
+
+    <!-- Hero Section -->
+    <section id="about" class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 reveal zoom-in">
+      <div class="space-y-6 flex-1">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span> CSE Student @ IUB
+        </div>
+
+        <div>
+          <!-- Typewriter Animated Name -->
+          <h1 id="typewriter-name" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white min-h-[50px]"></h1>
+          <!-- Typewriter Animated Bio -->
+          <p id="typewriter-bio" class="text-sm sm:text-base text-gray-400 leading-relaxed mt-3 min-h-[80px]"></p>
+        </div>
+      </div>
+
+      <!-- Simple Profile Image (Without Blocky Background Box) -->
+      <div class="flex-shrink-0 cursor-pointer" onclick="openLightbox('profile.jpeg')">
+        <img src="profile.jpeg" alt="Mehedi Hasan Seyam" class="w-48 h-60 sm:w-56 sm:h-72 object-cover rounded-2xl border border-white/20 shadow-2xl hover:border-sky-400 transition-all duration-500 hover:scale-105" onerror="this.src='https://via.placeholder.com/300x400?text=Profile'">
+      </div>
+    </section>
+
+    <!-- 01. CAREER OBJECTIVE -->
+    <section class="reveal slide-left">
+      <div class="glass-card rounded-2xl p-6 sm:p-8">
+        <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase mb-3 flex items-center gap-2">
+          <i data-lucide="target" class="w-4 h-4"></i> CAREER OBJECTIVE:
+        </h2>
+        <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+          A motivated and dedicated Computer Science and Engineering student seeking an opportunity to apply my academic knowledge, technical skills, and problem-solving abilities in a professional environment. I am eager to contribute to the success of an organization while continuously learning, developing new skills, and growing both personally and professionally
+        </p>
+      </div>
+    </section>
+
+    <!-- 02. EXPERIENCE -->
+    <section class="reveal slide-right">
+      <div class="glass-card rounded-2xl p-6 sm:p-8">
+        <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase mb-3 flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> EXPERIENCE:
+        </h2>
+        <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+          Currently, I do not have any formal professional work experience. However, I have gained practical knowledge and hands-on experience through academic projects, coursework, and self-learning. I am eager to apply my skills and continuously develop my professional abilities in a real-world work environment.
+        </p>
+      </div>
+    </section>
+
+    <!-- 03. Academic Qualifications -->
+    <section id="education" class="space-y-6">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2 reveal fade-up">
+        <i data-lucide="graduation-cap" class="w-4 h-4"></i> Academic Qualifications
+      </h2>
+
+      <div class="grid grid-cols-1 gap-4">
+        <div class="glass-card rounded-2xl p-6 space-y-2 reveal fade-up stagger-1">
+          <div class="flex justify-between items-start flex-wrap gap-2">
+            <div>
+              <h3 class="text-base font-bold text-white">Bachelor of Science (B.Sc.) in CSE</h3>
+              <p class="text-xs text-sky-400">Independent University, Bangladesh (IUB)</p>
+            </div>
+            <span class="px-3 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold rounded-full">CGPA 3.12 / 4.00</span>
+          </div>
+          <p class="text-xs text-gray-400">School of Engineering, Technology and Sciences (SETS) • 2025 - Present</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-2 reveal fade-up stagger-2">
+          <div class="flex justify-between items-start flex-wrap gap-2">
+            <div>
+              <h3 class="text-base font-bold text-white">Higher Secondary Certificate (H.S.C)</h3>
+              <p class="text-xs text-sky-400">Principal Kazi Faruky College (Cumilla Board)</p>
+            </div>
+            <span class="px-3 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold rounded-full">GPA 4.62 / 5.00</span>
+          </div>
+          <p class="text-xs text-gray-400">Group: Science • Year: 2024</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-2 reveal fade-up stagger-3">
+          <div class="flex justify-between items-start flex-wrap gap-2">
+            <div>
+              <h3 class="text-base font-bold text-white">Secondary School Certificate (S.S.C)</h3>
+              <p class="text-xs text-sky-400">Principal Kazi Faruky School (Cumilla Board)</p>
+            </div>
+            <span class="px-3 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold rounded-full">GPA 4.89 / 5.00</span>
+          </div>
+          <p class="text-xs text-gray-400">Group: Science • Year: 2022</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. PERSONAL DETAILS SECTION -->
+    <section id="personal-details" class="space-y-6 reveal fade-up">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2">
+        <i data-lucide="user" class="w-4 h-4"></i> PERSONAL DETAILS
+      </h2>
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="space-y-2">
+            <p><span class="text-gray-400 font-semibold">Father’s Name:</span> <span class="text-white">MD. Abu Noman</span></p>
+            <p><span class="text-gray-400 font-semibold">Mother’s Name:</span> <span class="text-white">Jannat Ara Khanom</span></p>
+            <p><span class="text-gray-400 font-semibold">Date of Birth:</span> <span class="text-white">30-09-2004</span></p>
+            <p><span class="text-gray-400 font-semibold">Nationality:</span> <span class="text-white">Bangladeshi (by Birth)</span></p>
+            <p><span class="text-gray-400 font-semibold">Religion:</span> <span class="text-white">Islam</span></p>
+            <p><span class="text-gray-400 font-semibold">Marital Status:</span> <span class="text-white">Unmarried</span></p>
+            <p><span class="text-gray-400 font-semibold">Height:</span> <span class="text-white">5’-7”</span></p>
+          </div>
+
+          <div class="space-y-3 border-t md:border-t-0 md:border-l border-white/10 pt-3 md:pt-0 md:pl-6">
+            <div>
+              <p class="text-gray-400 font-semibold mb-1">Mailing Address:</p>
+              <p class="text-white leading-relaxed">House No-99 , Block-B , Bashundhara R/A Dhaka.</p>
+            </div>
+            <div>
+              <p class="text-gray-400 font-semibold mb-1">Permanent Address:</p>
+              <p class="text-white leading-relaxed">M/S Abu Noman,<br>Vill : Chorababil, P.O : Haydorgonj,<br>P.S: Raipur, Dist: Lakshmipur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. SKILLS SECTION WITH ORIGINAL BRAND LOGOS -->
+    <section id="skills" class="space-y-6">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2 reveal slide-left">
+        <i data-lucide="code" class="w-4 h-4"></i> Skills & Programming
+      </h2>
+
+      <div class="space-y-3">
+        <h3 class="text-sm font-semibold text-gray-300 reveal slide-left">Technical Skills & Tools</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          
+          <!-- Python Original Logo -->
+          <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center group hover:border-amber-400/50 reveal zoom-in stagger-1">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
+              <i class="devicon-python-plain colored text-3xl"></i>
+            </div>
+            <span class="text-xs font-bold text-white">Python</span>
+            <span class="text-[10px] text-gray-400">Core Programming</span>
+          </div>
+
+          <!-- HTML5 Original Logo -->
+          <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center group hover:border-orange-500/50 reveal zoom-in stagger-2">
+            <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center group-hover:scale-125 group-hover:-rotate-6 transition-all duration-500">
+              <i class="devicon-html5-plain colored text-3xl"></i>
+            </div>
+            <span class="text-xs font-bold text-white">HTML5</span>
+            <span class="text-[10px] text-gray-400">Frontend</span>
+          </div>
+
+          <!-- CSS3 Original Logo -->
+          <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center group hover:border-blue-500/50 reveal zoom-in stagger-3">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
+              <i class="devicon-css3-plain colored text-3xl"></i>
+            </div>
+            <span class="text-xs font-bold text-white">CSS3</span>
+            <span class="text-[10px] text-gray-400">Styling</span>
+          </div>
+
+          <!-- Tailwind CSS Original Logo -->
+          <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center group hover:border-sky-400/50 reveal zoom-in stagger-4">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center group-hover:scale-125 group-hover:-rotate-6 transition-all duration-500">
+              <i class="devicon-tailwindcss-plain colored text-3xl"></i>
+            </div>
+            <span class="text-xs font-bold text-white">Tailwind CSS</span>
+            <span class="text-[10px] text-gray-400">Framework</span>
+          </div>
+
+          <!-- MS Office SVG Logo -->
+          <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center group hover:border-red-500/50 reveal zoom-in stagger-5">
+            <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                <path d="M21.17 3.25L12 1.5v21l9.17-1.75c.48-.09.83-.5.83-.99V4.24c0-.49-.35-.9-.83-.99z" fill="#E61C24"/>
+                <path d="M12 1.5L2.83 3.25C2.35 3.34 2 3.75 2 4.24v15.52c0 .49.35.9.83.99L12 22.5V1.5z" fill="#EB3C00"/>
+                <path d="M7 8.5h3.5v7H7z" fill="#FFF"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-white">MS Office</span>
+            <span class="text-[10px] text-gray-400">Word/Excel/PPT</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 space-y-3 reveal fade-up">
+        <h3 class="text-sm font-bold text-white border-b border-white/5 pb-2">Language Proficiency</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300">
+          <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400"></i> Bengali (Native Proficiency)</div>
+          <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400"></i> English (Good Proficiency)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. Projects -->
+    <section id="projects" class="space-y-6">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2 reveal slide-right">
+        <i data-lucide="folder-git-2" class="w-4 h-4"></i> Projects & Work
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 space-y-4 flex flex-col justify-between reveal slide-left stagger-1">
+          <div>
+            <h3 class="text-base font-bold text-white">Faculty Academic Profile</h3>
+            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+              Academic portfolio for Muhammad Mustafizur Rahman, Adjunct Faculty at IUB (SLASS). Built with modern UI and contact form integration.
+            </p>
+          </div>
+          <a href="https://muhammadmustafizurrahman.netlify.app" target="_blank" class="click-btn inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 pt-2 transition-transform hover:translate-x-1 duration-500">
+            Live Preview <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4 flex flex-col justify-between reveal slide-right stagger-2">
+          <div>
+            <h3 class="text-base font-bold text-white">Jonaki Service Website</h3>
+            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+              A responsive agency service template designed using HTML and CSS to showcase company offerings smoothly.
+            </p>
+          </div>
+          <a href="https://jonakiservice.vercel.app/" target="_blank" class="click-btn inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 pt-2 transition-transform hover:translate-x-1 duration-500">
+            Live Preview <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- PERSONAL PORTFOLIO CARD -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 flex flex-col justify-between reveal slide-left stagger-3 md:col-span-2">
+          <div>
+            <h3 class="text-base font-bold text-white">Personal Developer Portfolio</h3>
+            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+              My personal web showcase hosted on GitHub Pages, featuring clean dark-mode design, glassmorphism cards, and interactive dynamic components for showcasing my CSE journey and works.
+            </p>
+          </div>
+          <a href="https://mehedihasanseyam.github.io/" target="_blank" class="click-btn inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 pt-2 transition-transform hover:translate-x-1 duration-500">
+            Live Preview <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. CONNECT WITH ME SECTION -->
+    <section id="connect" class="space-y-6 reveal fade-up">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2">
+        <i data-lucide="share-2" class="w-4 h-4"></i> Connect With Me
+      </h2>
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8">
+        <!-- Website View: Interactive Buttons -->
+        <div class="web-contact-btns">
+          <p class="text-xs sm:text-sm text-gray-400 mb-6">
+            Feel free to reach out to me for project inquiries, collaborations, or technical networking! Click below to open:
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Official Email -->
+            <button onclick="window.location.href='mailto:mhs2700823@gmail.com'" class="click-btn glass-card px-4 py-3 rounded-xl text-xs font-medium text-gray-300 flex items-center gap-2.5 hover:text-white hover:border-sky-400/50 transition-all duration-500">
+              <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052c1.618-1.214 3.927-.059 3.927 1.964z" fill="#ea4335"/></svg>
+              Email
+            </button>
+
+            <!-- Official WhatsApp -->
+            <button onclick="window.open('https://wa.me/8801759333003', '_blank')" class="click-btn glass-card px-4 py-3 rounded-xl text-xs font-medium text-gray-300 flex items-center gap-2.5 hover:text-white hover:border-emerald-400/50 transition-all duration-500">
+              <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#25d366"/></svg>
+              WhatsApp
+            </button>
+
+            <!-- Official LinkedIn -->
+            <button onclick="window.open('https://www.linkedin.com/in/mehedihasanseyam6299', '_blank')" class="click-btn glass-card px-4 py-3 rounded-xl text-xs font-medium text-gray-300 flex items-center gap-2.5 hover:text-white hover:border-indigo-400/50 transition-all duration-500">
+              <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="#0a66c2"/></svg>
+              LinkedIn
+            </button>
+
+            <!-- Official Facebook -->
+            <button onclick="window.open('https://www.facebook.com/share/1EKq4xRLBH/', '_blank')" class="click-btn glass-card px-4 py-3 rounded-xl text-xs font-medium text-gray-300 flex items-center gap-2.5 hover:text-white hover:border-blue-400/50 transition-all duration-500">
+              <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877f2"/></svg>
+              Facebook
+            </button>
+
+            <!-- Official Instagram -->
+            <button onclick="window.open('https://www.instagram.com/seyam0010?dlrf=MXVlMHJpbG56NHZpNQ==', '_blank')" class="click-btn glass-card px-4 py-3 rounded-xl text-xs font-medium text-gray-300 flex items-center gap-2.5 hover:text-white hover:border-pink-400/50 transition-all duration-500">
+              <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="#e1306c"/></svg>
+              Instagram
+            </button>
+          </div>
+        </div>
+
+        <!-- PDF View: Text Details with Seyam0010 -->
+        <div class="pdf-contact-info space-y-2 text-xs sm:text-sm">
+          <p><span class="font-bold">Email:</span> mhs2700823@gmail.com</p>
+          <p><span class="font-bold">WhatsApp:</span> 01759-333003</p>
+          <p><span class="font-bold">Instagram:</span> Seyam0010</p>
+          <p><span class="font-bold">Facebook:</span> Mehedi Hasan Seyam</p>
+          <p><span class="font-bold">LinkedIn:</span> Mehedi Hasan Seyam</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08. References -->
+    <section id="references" class="space-y-6">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2 reveal fade-up">
+        <i data-lucide="user-check" class="w-4 h-4"></i> References
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 space-y-2 reveal slide-left stagger-1">
+          <h3 class="text-sm font-bold text-white">Barrister Md. Imam Hossain Tareq</h3>
+          <p class="text-xs text-sky-400">Deputy Attorney General of Bangladesh</p>
+          <p class="text-xs text-gray-400">Head of Chamber, The Justice Corner</p>
+          <p class="text-xs text-gray-400">Advocate, Supreme Court of Bangladesh</p>
+          <p class="text-xs text-gray-300 pt-2"><i data-lucide="phone" class="w-3.5 h-3.5 inline mr-1"></i> +880 1760-907777</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-2 reveal slide-right stagger-2">
+          <h3 class="text-sm font-bold text-white">Dr. Md. Fayez Ahmed</h3>
+          <p class="text-xs text-sky-400">Associate Professor & Head</p>
+          <p class="text-xs text-gray-400">Department of Orthopaedic Surgery</p>
+          <p class="text-xs text-gray-400">Shahabuddin Medical College & Hospital, Dhaka</p>
+          <p class="text-xs text-gray-400">MBBS (Dhaka), BCS (Health), D-Ortho (BSMMU), MS-Ortho (BSMMU)</p>
+          <p class="text-xs text-gray-400">Specialized Training: Trauma & Hand Surgery (Singapore)</p>
+          <p class="text-xs text-gray-300 pt-2"><i data-lucide="phone" class="w-3.5 h-3.5 inline mr-1"></i> +880 1711-891027</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. Gallery (Simple & Natural Image Size) -->
+    <section id="gallery" class="space-y-6">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2 reveal slide-left">
+        <i data-lucide="image" class="w-4 h-4"></i> Gallery & Moments
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-items-center">
+        
+        <div class="reveal zoom-in stagger-1 group cursor-pointer" onclick="openLightbox('photo1.jpeg')">
+          <img src="photo1.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+1'">
+        </div>
+
+        <div class="reveal zoom-in stagger-2 group cursor-pointer" onclick="openLightbox('photo2.jpeg')">
+          <img src="photo2.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+2'">
+        </div>
+
+        <div class="reveal zoom-in stagger-3 group cursor-pointer" onclick="openLightbox('photo3.jpeg')">
+          <img src="photo3.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+3'">
+        </div>
+
+        <div class="reveal zoom-in stagger-4 group cursor-pointer" onclick="openLightbox('photo4.jpeg')">
+          <img src="photo4.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+4'">
+        </div>
+
+        <div class="reveal zoom-in stagger-5 group cursor-pointer" onclick="openLightbox('photo5.jpeg')">
+          <img src="photo5.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+5'">
+        </div>
+
+        <div class="reveal zoom-in stagger-1 group cursor-pointer" onclick="openLightbox('photo6.jpeg')">
+          <img src="photo6.jpeg" class="rounded-2xl max-h-[450px] w-auto object-contain border border-white/10 shadow-xl group-hover:scale-105 group-hover:border-sky-400/50 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Photo+6'">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. AUTOMATIC RESUME / CV GENERATOR SECTION -->
+    <section id="resume" class="space-y-6 reveal fade-up">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2">
+        <i data-lucide="file-text" class="w-4 h-4"></i> Curriculum Vitae (CV)
+      </h2>
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <h3 class="text-base font-bold text-white">Download Complete Portfolio & Resume Dashboard</h3>
+          <p class="text-xs sm:text-sm text-gray-400">
+            Click the button to save a clean, high-quality static PDF dashboard of your CV without any animations.
+          </p>
+        </div>
+
+        <button onclick="downloadWebsitePDF()" class="click-btn flex-shrink-0 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-xs font-bold flex items-center gap-2 hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-500 hover:scale-105 cursor-pointer">
+          <i data-lucide="download" class="w-4 h-4"></i> Save Full Resume (PDF)
+        </button>
+      </div>
+    </section>
+
+    <!-- 11. JUST MESSAGE OPTION -->
+    <section id="contact-message" class="space-y-6 reveal fade-up">
+      <h2 class="text-xs font-bold text-sky-400 tracking-wider uppercase flex items-center gap-2">
+        <i data-lucide="message-square" class="w-4 h-4"></i> Send Me a Message
+      </h2>
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8">
+        <p class="text-xs sm:text-sm text-gray-400 mb-6">
+          Have a question or want to discuss a project? Write your message below to reach out:
+        </p>
+
+        <div class="space-y-4 text-xs sm:text-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="text-gray-300 font-semibold">Your Name</label>
+              <input type="text" id="simple-name" required placeholder="John Doe" class="click-btn w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors">
+            </div>
+            <div class="space-y-1">
+              <label class="text-gray-300 font-semibold">Your Contact (Email or Phone)</label>
+              <input type="text" id="simple-contact" placeholder="john@example.com / +8801..." class="click-btn w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors">
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="text-gray-300 font-semibold">Message</label>
+            <textarea id="simple-msg" rows="4" required placeholder="Write your message here..." class="click-btn w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors resize-none"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="handleSendMessage()" class="click-btn px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-2 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-sky-500/25">
+              <i data-lucide="send" class="w-4 h-4"></i> Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal With Close Button (X) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4 backdrop-blur-md cursor-pointer" onclick="closeLightbox()">
+    <div class="relative max-w-full max-h-[90vh]">
+      <!-- Close Button (X) -->
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-8 p-2 text-white hover:text-sky-400 text-xl font-bold transition-colors cursor-pointer flex items-center gap-1 bg-gray-900/80 rounded-full px-3 py-1 border border-white/20">
+        <i data-lucide="x" class="w-5 h-5"></i> <span class="text-xs">Close</span>
+      </button>
+
+      <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-2xl border border-white/10 shadow-2xl transition-transform duration-500 scale-95" onclick="event.stopPropagation()">
+    </div>
+  </div>
+
+  <footer class="border-t border-white/5 py-8 text-center text-xs text-gray-500">
+    © <span id="current-year"></span> Mehedi Hasan Seyam. Portfolio.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // DYNAMIC YEAR AUTO UPDATE
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // DASHBOARD MENU TOGGLE FUNCTION
+    function toggleDashboardMenu() {
+      const dropdown = document.getElementById('dashboard-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Dynamic Text Constants
+    const nameText = "MEHEDI HASAN SEYAM";
+    const bioText = "I am Mehedi Hasan Seyam — a Computer Science and Engineering student passionate about programming, web development, and building practical projects. I am an aspiring Software Engineer, continuously learning and developing my technical skills.";
+
+    // Clean Print PDF Generator Function
+    function downloadWebsitePDF() {
+      const nameEl = document.getElementById('typewriter-name');
+      const bioEl = document.getElementById('typewriter-bio');
+      
+      nameEl.textContent = nameText;
+      bioEl.textContent = bioText;
+      nameEl.classList.remove('typing-cursor');
+      bioEl.classList.remove('typing-cursor');
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('is-visible');
+      });
+      window.print();
+    }
+
+    // Dynamic Message Handler
+    function handleSendMessage() {
+      const name = document.getElementById('simple-name').value;
+      const contact = document.getElementById('simple-contact').value;
+      const msg = document.getElementById('simple-msg').value;
+
+      if (!name || !msg) {
+        alert("Please enter your name and message.");
+        return;
+      }
+
+      const text = `*New Message from Portfolio*\n\n*Name:* ${name}\n*Contact:* ${contact}\n*Message:* ${msg}`;
+      const waUrl = `https://wa.me/8801759333003?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.classList.remove('hidden');
+      setTimeout(() => img.classList.remove('scale-95'), 10);
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.classList.add('scale-95');
+      setTimeout(() => lightbox.classList.add('hidden'), 300);
+    }
+
+    // SLOWED TYPEWRITER ANIMATION FOR NAME & BIO
+    function initTypewriter() {
+      const nameEl = document.getElementById('typewriter-name');
+      const bioEl = document.getElementById('typewriter-bio');
+
+      let i = 0, j = 0;
+      nameEl.classList.add('typing-cursor');
+
+      function typeName() {
+        if (i < nameText.length) {
+          nameEl.textContent += nameText.charAt(i++);
+          setTimeout(typeName, 250);
+        } else {
+          nameEl.classList.remove('typing-cursor');
+          bioEl.classList.add('typing-cursor');
+          setTimeout(typeBio, 600);
+        }
+      }
+
+      function typeBio() {
+        if (j < bioText.length) {
+          bioEl.textContent += bioText.charAt(j++);
+          setTimeout(typeBio, 80);
+        } else {
+          bioEl.classList.remove('typing-cursor');
+        }
+      }
+
+      typeName();
+    }
+
+    // Scroll Observer for Web Animation
+    function initScrollObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initTypewriter();
+      initScrollObserver();
+    });
+  </script>
+</body>
+</html>
